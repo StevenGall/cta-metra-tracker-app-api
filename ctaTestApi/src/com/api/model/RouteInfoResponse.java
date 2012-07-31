@@ -2,6 +2,8 @@ package com.api.model;
 
 import java.util.LinkedList;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 public class RouteInfoResponse {
 
 	public String timeStamp;
@@ -11,6 +13,7 @@ public class RouteInfoResponse {
 	public RouteInfoResponse(){
 		
 	}
+	
 	public RouteInfoResponse(String timeStamp, int numericErrorCode, String errorDescription){
 		this.timeStamp = timeStamp;
 		this.numericErrorCode = numericErrorCode;
@@ -39,5 +42,9 @@ public class RouteInfoResponse {
 	}
 	public void setTrainEta(LinkedList<TrainETA> trainEta){
 		this.trainEta=trainEta;
+	}
+	@Override
+	public String toString(){
+		return ToStringBuilder.reflectionToString(this);
 	}
 }

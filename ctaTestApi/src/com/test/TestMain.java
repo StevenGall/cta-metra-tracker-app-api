@@ -4,13 +4,15 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.SAXParser;
+import javax.xml.parsers.SAXParserFactory;
 
-import org.w3c.dom.Document;
+import org.xml.sax.InputSource;
+import org.xml.sax.XMLReader;
 
 import com.api.cta.TrainTrackerRequest;
 import com.api.cta.TrainTrackerUtil;
+import com.api.handler.RouteInfoResponseHandler;
 
 public class TestMain {
 	
@@ -27,16 +29,16 @@ public class TestMain {
 		connection.setRequestProperty("Accept", "application/xml");
 
 		InputStream xml = new BufferedInputStream(connection.getInputStream());
-		System.out.println(xml.available());
-		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-	    dbf.setValidating(false);
-	    dbf.setIgnoringComments(false);
-	    dbf.setIgnoringElementContentWhitespace(true);
-	    dbf.setNamespaceAware(true);
-		DocumentBuilder db = dbf.newDocumentBuilder();
+		SAXParserFactory factory = SAXParserFactory.newInstance();
+		// create a parser
+		SAXParser parser = factory.newSAXParser();
+		// create the reader (scanner)
 		
-		Document doc =  db.parse(xml);
-		System.out.print(doc.toString());
+		XMLReader xmlReader = parser.getXMLReader();
+		RouteInfoResponseHandler routeInfoResponseHandler = new RouteInfoResponseHandler();
+		xmlReader.setContentHandler(routeInfoResponseHandler);
+		xmlReader.parse(new InputSource(xml));
+		
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
