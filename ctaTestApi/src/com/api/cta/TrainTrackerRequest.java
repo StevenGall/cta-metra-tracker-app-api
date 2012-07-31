@@ -37,5 +37,9 @@ public class TrainTrackerRequest {
 	public String getRouteCode(){
 		return routeCode;
 	}
+	@Override
+	public String toString(){
+		StringUtils.EMPTY;
+	}
 
 }
