@@ -16,7 +16,7 @@ public enum TrainTrackerUtil {
 	/**
 	 * @return retunrs URL that contains the CTA_BASE_REQUEST_URL with the API_KEY parameter in the query string.
 	 */
-	public String createRequestUrl(TrainTrackerRequest trainTrackerRequest){
+	public static String createRequestUrl(TrainTrackerRequest trainTrackerRequest){
 		StringBuilder sb = new StringBuilder();
 		sb.append(TrainTrackerUtil.CTA_BASE_REQUEST_URL + "?" + API_KEY_CODE_PARAMETER + EQUALS + API_KEY_CODE +  trainTrackerRequest.toString() );
 		return sb.toString();
