@@ -43,6 +43,6 @@ public class TrainETA {
 		return predictionGeneratedTimeStamp;
 	}
 	public String getPredictionArrivialTimeStamp(){
-		return predictionArrivialTimeStamp
+		return predictionArrivalTimeStamp;
 	}
 }
