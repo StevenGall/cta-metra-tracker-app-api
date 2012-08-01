@@ -1,20 +1,21 @@
 package com.api.model;
 
 public class TrainETA {
-	public int numericStationId;
-	public int numericStopId;
-	public String stationName;
-	public String stopDescription;
-	public int runNumber;
-	public String routeAbbr;
-	public String destinationStop;
-	public String trainDirection;
-	public String predictionGeneratedTimeStamp;
-	public String predictionArrivalTimeStamp;
-	public boolean approaching;
-	public boolean schedule;
-	public boolean faultDetected;
-	public boolean delayed;
+	private int numericStationId;
+	private int numericStopId;
+	private String stationName;
+	private String stopDescription;
+	private int runNumber;
+	private String routeAbbr;
+	private String destinationStop;
+	private int trainDirection;
+	private String predictionGeneratedTimeStamp;
+	private String predictionArrivalTimeStamp;
+	private boolean approaching;
+	private boolean schedule;
+	private boolean faultDetected;
+	private boolean delayed;
+	
 	public TrainETA(){
 		
 	}
@@ -74,6 +75,14 @@ public class TrainETA {
 		this.destinationStop = destinationStop;
 	}
 	
+	public int getTrainDirection() {
+		return trainDirection;
+	}
+	
+	public void setTrainDirection(int trainDirection) {
+		this.trainDirection = trainDirection;
+	}
+	
 	public String getPredictionGeneratedTimeStamp(){
 		return predictionGeneratedTimeStamp;
 	}
@@ -89,4 +98,37 @@ public class TrainETA {
 	public void setPredictionArrivalTimeStamp(String predictionArrivalTimeStamp) {
 		this.predictionArrivalTimeStamp = predictionArrivalTimeStamp;
 	}
+	
+	public boolean getApproaching() {
+		return approaching;
+	}
+	
+	public void setApproaching(boolean approaching) {
+		this.approaching = approaching;
+	}
+	
+	public boolean getSchedule() {
+		return schedule;
+	}
+	
+	public void setSchedule(boolean schedule) {
+		this.schedule = schedule;
+	}
+	
+	public boolean getFaultDetected() {
+		return faultDetected;
+	}
+	
+	public void setFaultDetected(boolean faultDetected) {
+		this.faultDetected = faultDetected;
+	}
+	
+	public boolean getDelayed() {
+		return delayed;
+	}
+	
+	public void setDelayed(boolean delayed) {
+		this.delayed = delayed;
+	}
+	
 }

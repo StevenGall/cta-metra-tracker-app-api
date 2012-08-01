@@ -6,18 +6,20 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class RouteInfoResult {
 
-	public String timeStamp;
-	public int numericErrorCode;
-	public String errorDescription;
-	public LinkedList<TrainETA> trainEta;
+	private String timeStamp;
+	private int numericErrorCode;
+	private String errorDescription;
+	private LinkedList<TrainETA> trainEta;
+	
 	public RouteInfoResult(){
-		
+		this.trainEta = new LinkedList<TrainETA>();
 	}
 	
 	public RouteInfoResult(String timeStamp, int numericErrorCode, String errorDescription){
 		this.timeStamp = timeStamp;
 		this.numericErrorCode = numericErrorCode;
 		this.errorDescription = errorDescription;
+		this.trainEta = new LinkedList<TrainETA>();
 	}
 	public String getTimeStamp(){
 		return timeStamp;
