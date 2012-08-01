@@ -12,7 +12,7 @@ import org.xml.sax.XMLReader;
 
 import com.api.cta.TrainTrackerRequest;
 import com.api.cta.TrainTrackerUtil;
-import com.api.handler.RouteInfoResponseHandler;
+import com.api.handler.RouteInfoResultHandler;
 
 public class TestMain {
 	
@@ -35,8 +35,8 @@ public class TestMain {
 		// create the reader (scanner)
 		
 		XMLReader xmlReader = parser.getXMLReader();
-		RouteInfoResponseHandler routeInfoResponseHandler = new RouteInfoResponseHandler();
-		xmlReader.setContentHandler(routeInfoResponseHandler);
+		RouteInfoResultHandler routeInfoResultHandler = new RouteInfoResultHandler();
+		xmlReader.setContentHandler(routeInfoResultHandler);
 		xmlReader.parse(new InputSource(xml));
 		
 		} catch (Exception e) {
