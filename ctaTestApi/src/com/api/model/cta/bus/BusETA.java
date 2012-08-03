@@ -3,6 +3,7 @@ package com.api.model.cta.bus;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 public class BusETA {
+	//TODO: ADD ERROR SUPPORT
 	private String timeStamp;
 	private String type; //new name?
 	private int numericStopId;

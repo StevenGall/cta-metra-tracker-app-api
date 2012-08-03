@@ -9,8 +9,8 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import com.api.constants.cta.train.RouteInfoResultConstants;
 import com.api.constants.cta.train.TrainEtaXmlConstants;
-import com.api.model.cta.train.TrainRouteInfoResult;
 import com.api.model.cta.train.TrainETA;
+import com.api.model.cta.train.TrainRouteInfoResult;
 
 public class TrainRouteInfoResultHandler extends DefaultHandler{
 	
@@ -59,10 +59,8 @@ public class TrainRouteInfoResultHandler extends DefaultHandler{
         	routeInfoResult.setNumericErrorCode(Integer.parseInt(buffer.toString()));
         }
         else if(StringUtils.equals(qName, TrainEtaXmlConstants.TRAIN_ETA_CONTAINER_TAG)) {
-        	 //consider replacing setTrainETA with an addTrainETA so we dont copy entire list all the time
-        	trainETAList = routeInfoResult.getTrainEta();
-        	trainETAList.add(trainETA);
-        	routeInfoResult.setTrainEta(trainETAList);
+        	routeInfoResult.getTrainEta().add(trainETA);
+        	
         }
         else if(StringUtils.equals(qName,TrainEtaXmlConstants.NUMERIC_STATION_ID_TAG)) {
         	trainETA.setNumericStationId(Integer.parseInt(buffer.toString()));
