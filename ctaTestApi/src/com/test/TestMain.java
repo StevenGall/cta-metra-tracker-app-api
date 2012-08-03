@@ -10,9 +10,9 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
-import com.api.cta.TrainTrackerRequest;
-import com.api.cta.TrainTrackerUtil;
-import com.api.handler.RouteInfoResultHandler;
+import com.api.handler.cta.train.RouteInfoResultHandler;
+import com.api.util.cta.train.TrainTrackerRequest;
+import com.api.util.cta.train.TrainTrackerUtil;
 
 public class TestMain {
 	

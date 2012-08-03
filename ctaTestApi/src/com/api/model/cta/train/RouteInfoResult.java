@@ -1,4 +1,4 @@
-package com.api.model;
+package com.api.model.cta.train;
 
 import java.util.LinkedList;
 

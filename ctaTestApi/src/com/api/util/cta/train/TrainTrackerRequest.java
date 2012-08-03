@@ -1,4 +1,4 @@
-package com.api.cta;
+package com.api.util.cta.train;
 
 import org.apache.commons.lang3.StringUtils;
 

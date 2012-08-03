@@ -1,4 +1,4 @@
-package com.api.handler;
+package com.api.handler.cta.train;
 
 import java.util.LinkedList;
 
@@ -9,8 +9,8 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import com.api.constants.cta.train.RouteInfoResultConstants;
 import com.api.constants.cta.train.TrainEtaXmlConstants;
-import com.api.model.RouteInfoResult;
-import com.api.model.TrainETA;
+import com.api.model.cta.train.RouteInfoResult;
+import com.api.model.cta.train.TrainETA;
 
 public class RouteInfoResultHandler extends DefaultHandler{
 	

@@ -1,4 +1,4 @@
-package com.api.model;
+package com.api.model.cta.train;
 
 public class TrainETA {
 	private int numericStationId;
