@@ -4,18 +4,18 @@ import java.util.LinkedList;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-public class RouteInfoResult {
+public class TrainRouteInfoResult {
 
 	private String timeStamp;
 	private int numericErrorCode;
 	private String errorDescription;
 	private LinkedList<TrainETA> trainEta;
 	
-	public RouteInfoResult(){
+	public TrainRouteInfoResult(){
 		this.trainEta = new LinkedList<TrainETA>();
 	}
 	
-	public RouteInfoResult(String timeStamp, int numericErrorCode, String errorDescription){
+	public TrainRouteInfoResult(String timeStamp, int numericErrorCode, String errorDescription){
 		this.timeStamp = timeStamp;
 		this.numericErrorCode = numericErrorCode;
 		this.errorDescription = errorDescription;

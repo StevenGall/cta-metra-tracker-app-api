@@ -9,12 +9,12 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import com.api.constants.cta.train.RouteInfoResultConstants;
 import com.api.constants.cta.train.TrainEtaXmlConstants;
-import com.api.model.cta.train.RouteInfoResult;
+import com.api.model.cta.train.TrainRouteInfoResult;
 import com.api.model.cta.train.TrainETA;
 
-public class RouteInfoResultHandler extends DefaultHandler{
+public class TraineRouteInfoResultHandler extends DefaultHandler{
 	
-	private RouteInfoResult routeInfoResult;
+	private TrainRouteInfoResult routeInfoResult;
 	private TrainETA trainETA;
 	private final StringBuffer buffer = new StringBuffer();
 	private LinkedList <TrainETA> trainETAList;
@@ -39,7 +39,7 @@ public class RouteInfoResultHandler extends DefaultHandler{
         buffer.setLength(0);
         
         if(StringUtils.equals(qName, RouteInfoResultConstants.TIME_STAMP_TAG)){
-        	routeInfoResult = new RouteInfoResult();
+        	routeInfoResult = new TrainRouteInfoResult();
         }
         else if(StringUtils.equals(qName, TrainEtaXmlConstants.TRAIN_ETA_CONTAINER_TAG)){
         	trainETA = new TrainETA();

@@ -10,19 +10,20 @@ import javax.xml.parsers.SAXParserFactory;
 import org.xml.sax.InputSource;
 import org.xml.sax.XMLReader;
 
-import com.api.handler.cta.train.RouteInfoResultHandler;
-import com.api.util.cta.train.TrainTrackerRequest;
-import com.api.util.cta.train.TrainTrackerUtil;
+import com.api.handler.cta.bus.BusRouteInfoResultHandler;
+import com.api.util.cta.bus.BusTrackerRequest;
+import com.api.util.cta.bus.BusTrackerUtil;
 
 public class TestMain {
 	
 	public static void main(String[] args){
-		TrainTrackerRequest trainTrackerRequest = new TrainTrackerRequest();
-		trainTrackerRequest.setMaxResults(3);
-		trainTrackerRequest.setNumericStationId("40360");
+		BusTrackerRequest busTrackerRequest = new BusTrackerRequest();
+		busTrackerRequest.setMaxResults(3);
+		busTrackerRequest.setNumericStopId("1392");
+		busTrackerRequest.getRouteCodes().add(new String("11"));
 		URL url;
 		try {
-			url = new URL(TrainTrackerUtil.createRequestUrl(trainTrackerRequest));
+			url = new URL(BusTrackerUtil.createRequestUrl(busTrackerRequest));
 		System.out.println(url.toString());
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		connection.setRequestMethod("GET");
@@ -35,8 +36,8 @@ public class TestMain {
 		// create the reader (scanner)
 		
 		XMLReader xmlReader = parser.getXMLReader();
-		RouteInfoResultHandler routeInfoResultHandler = new RouteInfoResultHandler();
-		xmlReader.setContentHandler(routeInfoResultHandler);
+		BusRouteInfoResultHandler busRouteInfoResultHandler = new BusRouteInfoResultHandler();
+		xmlReader.setContentHandler(busRouteInfoResultHandler);
 		xmlReader.parse(new InputSource(xml));
 		
 		} catch (Exception e) {
