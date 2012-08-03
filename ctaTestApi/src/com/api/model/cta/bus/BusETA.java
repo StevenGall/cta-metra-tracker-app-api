@@ -1,7 +1,9 @@
 package com.api.model.cta.bus;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
+
 public class BusETA {
-	private int timeStamp;
+	private String timeStamp;
 	private String type; //new name?
 	private int numericStopId;
 	private String stopDescription;
@@ -13,10 +15,14 @@ public class BusETA {
 	private String predictedArrival;
 	private int delayed;
 	
-	public int getTimeStamp() {
+	public BusETA() {
+		
+	}
+	
+	public String getTimeStamp() {
 		return timeStamp;
 	}
-	public void setTimeStamp(int timeStamp) {
+	public void setTimeStamp(String timeStamp) {
 		this.timeStamp = timeStamp;
 	}
 	public String getType() {
@@ -78,6 +84,11 @@ public class BusETA {
 	}
 	public void setDelayed(int delayed) {
 		this.delayed = delayed;
+	}
+	
+	@Override
+	public String toString(){
+		return ToStringBuilder.reflectionToString(this);
 	}
 	
 

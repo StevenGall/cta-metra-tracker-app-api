@@ -12,7 +12,7 @@ import com.api.constants.cta.train.TrainEtaXmlConstants;
 import com.api.model.cta.train.TrainRouteInfoResult;
 import com.api.model.cta.train.TrainETA;
 
-public class TraineRouteInfoResultHandler extends DefaultHandler{
+public class TrainRouteInfoResultHandler extends DefaultHandler{
 	
 	private TrainRouteInfoResult routeInfoResult;
 	private TrainETA trainETA;

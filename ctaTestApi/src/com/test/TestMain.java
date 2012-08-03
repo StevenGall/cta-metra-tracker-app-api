@@ -19,8 +19,8 @@ public class TestMain {
 	public static void main(String[] args){
 		BusTrackerRequest busTrackerRequest = new BusTrackerRequest();
 		busTrackerRequest.setMaxResults(3);
-		busTrackerRequest.setNumericStopId("1392");
-		busTrackerRequest.getRouteCodes().add(new String("11"));
+		busTrackerRequest.setNumericStopId("2345");
+		//busTrackerRequest.getRouteCodes().add(new String("11"));
 		URL url;
 		try {
 			url = new URL(BusTrackerUtil.createRequestUrl(busTrackerRequest));
