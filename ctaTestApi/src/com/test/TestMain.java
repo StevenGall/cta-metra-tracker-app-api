@@ -3,6 +3,7 @@ import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Map;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -13,6 +14,7 @@ import org.xml.sax.XMLReader;
 import com.api.handler.cta.bus.BusRouteInfoResultHandler;
 import com.api.util.cta.bus.BusTrackerRequest;
 import com.api.util.cta.bus.BusTrackerUtil;
+import com.api.util.metra.MetraTrackerUtil;
 
 public class TestMain {
 	
@@ -44,5 +46,8 @@ public class TestMain {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		Map metraMap = MetraTrackerUtil.getTrainLineStationMap();
+		
 	}
 }
