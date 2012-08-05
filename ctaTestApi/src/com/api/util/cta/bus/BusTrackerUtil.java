@@ -1,5 +1,9 @@
 package com.api.util.cta.bus;
 
+import java.io.InputStream;
+
+import com.api.util.ConnectionUtil;
+
 
 
 
@@ -22,6 +26,9 @@ public enum BusTrackerUtil {
 		StringBuilder sb = new StringBuilder();
 		sb.append(BusTrackerUtil.CTA_BASE_REQUEST_URL + "?" + API_KEY_CODE_PARAMETER + EQUALS + API_KEY_CODE +  busTrackerRequest.toString() );
 		return sb.toString();
+	}
+	public static InputStream getBusTrackerInputStream(BusTrackerRequest busTrackerRequest){
+		return ConnectionUtil.getInputStream(BusTrackerUtil.createRequestUrl(busTrackerRequest));
 	}
 	
 }

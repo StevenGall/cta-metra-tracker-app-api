@@ -1,5 +1,9 @@
 package com.api.util.cta.train;
 
+import java.io.InputStream;
+
+import com.api.util.ConnectionUtil;
+
 
 
 /**
@@ -22,5 +26,7 @@ public enum TrainTrackerUtil {
 		sb.append(TrainTrackerUtil.CTA_BASE_REQUEST_URL + "?" + API_KEY_CODE_PARAMETER + EQUALS + API_KEY_CODE +  trainTrackerRequest.toString() );
 		return sb.toString();
 	}
-	
+	public static InputStream getTrainTrackerInputStream(TrainTrackerRequest trainTrackerRequest){
+		return ConnectionUtil.getInputStream(TrainTrackerUtil.createRequestUrl(trainTrackerRequest));
+	}
 }

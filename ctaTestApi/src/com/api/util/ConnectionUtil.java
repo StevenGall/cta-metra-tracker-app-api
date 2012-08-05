@@ -33,5 +33,16 @@ public enum ConnectionUtil {
 		}
 		return null;
 	}
+	public static InputStream getInputStream(HttpURLConnection httpUrlConnection){
+		if (null != httpUrlConnection){
+			try {
+				return httpUrlConnection.getInputStream();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
 
 }
