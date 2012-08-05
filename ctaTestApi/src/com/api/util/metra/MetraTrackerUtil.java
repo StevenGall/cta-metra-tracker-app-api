@@ -13,30 +13,41 @@ import com.api.util.ConversionUtil;
 
 public enum MetraTrackerUtil {
 	INSTANCE;
-	public static final String METRA_STATION_REQUEST_URL = "http://metrarail.com/content/metra/en/home/jcr:content/trainTracker.lataexport.html"; // Base URL to retrieve metra stations
+	public static final String METRA_LINE_STATION_MAP_REQUEST_URL = "http://metrarail.com/content/metra/en/home/jcr:content/trainTracker.lataexport.html"; // Base URL to retrieve metra stations
 	public static final String METRA_TRACKER_REQUEST_URL = "http://12.205.200.243/AJAXTrainTracker.svc/GetAcquityTrainData";
-	
+	public static final String METRA_STATION_JSON_REQUEST_URL = "http://metrarail.com/content/metra/en/home/jcr:content/trainTracker.get_stations_from_line.json?trackerNumber=0&trainLineId=";
 	public List<String> getStationByLine(String lineAbbr){
 		List<String> stationList = new LinkedList<String>();
 		
 		return stationList;
 	}
-	public static Map<String,String> getTrainLineStationMap(){
-		Map<String,String> trainLineStationMap = new HashMap<String,String>();
-		InputStream inputStream = ConnectionUtil.getInputStream(MetraTrackerUtil.METRA_STATION_REQUEST_URL);
+	public static Map<String,List<String>> getTrainLineStationMap(){
+		Map<String,List<String>> trainLineStationMap = new HashMap<String,List<String>>();
+		InputStream inputStream = ConnectionUtil.getInputStream(MetraTrackerUtil.METRA_LINE_STATION_MAP_REQUEST_URL);
 		String resultString = ConversionUtil.convertInputStreamToString(inputStream);
-		System.out.println(resultString);
-		String stationStopArray[] = resultString.split("<br />");
+		resultString = resultString.replaceAll("<[^>]*>", "\n");
+		String stationStopArray[] = resultString.split("\n");
 		for (String stationStop : stationStopArray){
 			String[] tokens = stationStop.split(",");
 			if ((tokens.length >= 2) && (StringUtils.isNotBlank(tokens[0])) && (StringUtils.isNotBlank(tokens[1]))){
-				trainLineStationMap.put(tokens[0], tokens[1]);
-				System.out.println("Line: " + tokens[0] + ", Stop: " + tokens[1] +"\n");
+				
+				if (trainLineStationMap.containsKey(tokens[0])){
+					trainLineStationMap.get(tokens[0]).add(tokens[1]);
+				}
+				else{
+					List<String> stopList = new LinkedList<String>();
+					stopList.add(tokens[1]);
+					trainLineStationMap.put(tokens[0], stopList);
+				}
+				
 			}
 		}
-		
-		
 		return trainLineStationMap;
+		
 	}
-	
+	public static Map<String,String> getStationListByLine(String lineAbbr){
+		Map<String,String> stationName = new HashMap<String,String>();
+		InputStream inputStream = ConnectionUtil.getInputStream(METRA_STATION_JSON_REQUEST_URL + lineAbbr);
+		return stationName;
+	}
 }

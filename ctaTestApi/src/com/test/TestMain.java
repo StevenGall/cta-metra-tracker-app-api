@@ -3,7 +3,9 @@ import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -46,8 +48,19 @@ public class TestMain {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		testMetra();
 		
-		Map metraMap = MetraTrackerUtil.getTrainLineStationMap();
+	}
+	
+	public static void testMetra(){
+		Map<String,List<String>> trainLineStationMap = MetraTrackerUtil.getTrainLineStationMap();
+		for (Entry entry : trainLineStationMap.entrySet()){
+			
+			for (String stop : (List<String>)entry.getValue()){
+				System.out.println("From Map Line: " + entry.getKey() + ", Stop: " + stop);
+			}
+		}
+		System.out.println("Map Size: " + trainLineStationMap.size());
 		
 	}
 }
