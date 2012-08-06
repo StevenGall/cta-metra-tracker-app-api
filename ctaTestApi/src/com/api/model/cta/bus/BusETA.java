@@ -15,6 +15,7 @@ public class BusETA {
 	private String routeDestination;
 	private String predictedArrival;
 	private int delayed;
+	private String errorDescription;
 	
 	public BusETA() {
 		
@@ -59,6 +60,7 @@ public class BusETA {
 	public int getNumericRouteId() {
 		return numericRouteId;
 	}
+	
 	public void setNumericRouteId(int numericRouteId) {
 		this.numericRouteId = numericRouteId;
 	}
@@ -85,6 +87,12 @@ public class BusETA {
 	}
 	public void setDelayed(int delayed) {
 		this.delayed = delayed;
+	}
+	public String getErrorDescription() {
+		return this.errorDescription;
+	}
+	public void setErrorDescription(String errorDescription) {
+		this.errorDescription = errorDescription;
 	}
 	
 	@Override
