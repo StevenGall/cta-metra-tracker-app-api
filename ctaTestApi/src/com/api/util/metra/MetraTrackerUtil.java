@@ -1,13 +1,14 @@
 package com.api.util.metra;
 
 import java.io.InputStream;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.api.constants.metra.TrainConstants;
 import com.api.util.ConnectionUtil;
 import com.api.util.ConversionUtil;
 
@@ -22,7 +23,7 @@ public enum MetraTrackerUtil {
 		return stationList;
 	}
 	public static Map<String,List<String>> getTrainLineStationMap(){
-		Map<String,List<String>> trainLineStationMap = new HashMap<String,List<String>>();
+		Map<String,List<String>> trainLineStationMap = new TreeMap<String,List<String>>();
 		InputStream inputStream = ConnectionUtil.getInputStream(MetraTrackerUtil.METRA_LINE_STATION_MAP_REQUEST_URL);
 		String resultString = ConversionUtil.convertInputStreamToString(inputStream);
 		resultString = resultString.replaceAll("<[^>]*>", "\n");
@@ -45,9 +46,12 @@ public enum MetraTrackerUtil {
 		return trainLineStationMap;
 		
 	}
-	public static Map<String,String> getStationListByLine(String lineAbbr){
-		Map<String,String> stationName = new HashMap<String,String>();
+	public static Map<String,String> getStationListByLineAbbr(String lineAbbr){
+		Map<String,String> stationName = new TreeMap<String,String>();
 		InputStream inputStream = ConnectionUtil.getInputStream(METRA_STATION_JSON_REQUEST_URL + lineAbbr);
 		return stationName;
+	}
+	public static String getLineNameFromAbbr(String lineAbbr){
+		return TrainConstants.railLAbbrToNameMap.get(lineAbbr);
 	}
 }
