@@ -14,6 +14,7 @@ public class BusRouteInfoResultHandler extends DefaultHandler {
 	
 	private final StringBuffer buffer = new StringBuffer();
 	private LinkedList<BusETA> busRoutes;
+	private String errorDescription;
 	private BusETA busETA;
     @Override
 	public void startDocument() throws SAXException {
@@ -81,6 +82,10 @@ public class BusRouteInfoResultHandler extends DefaultHandler {
         }
         if(StringUtils.equals(qName,BusEtaXmlConstants.PREDICTED_ARRIVAL_TIME_TAG)) {
         	this.busETA.setPredictedArrival(buffer.toString());
+        }
+        if(StringUtils.equals(qName, BusEtaXmlConstants.ERROR_TAG)) {
+        	this.busETA.setErrorDescription(buffer.toString());
+        	this.errorDescription = buffer.toString();
         }
     }
 
