@@ -18,12 +18,12 @@ public class BusRouteInfoResultHandler extends DefaultHandler {
 	private BusETA busETA;
     @Override
 	public void startDocument() throws SAXException {
-        System.out.println("start document   : ");
+        //System.out.println("start document   : ");
     }
 
     @Override
 	public void endDocument() throws SAXException {
-        System.out.println("end document     : ");
+        //System.out.println("end document     : ");
     }
 
     @Override
@@ -31,7 +31,7 @@ public class BusRouteInfoResultHandler extends DefaultHandler {
         String qName, Attributes attributes)
     throws SAXException {
 
-        System.out.println("start element    : " + qName);
+        //System.out.println("start element    : " + qName);
         
         buffer.setLength(0);
         
@@ -47,7 +47,7 @@ public class BusRouteInfoResultHandler extends DefaultHandler {
     @Override
 	public void endElement(String uri, String localName, String qName)
     throws SAXException {
-        System.out.println("end element      : " + qName);
+        //System.out.println("end element      : " + qName);
         
         if(StringUtils.equals(qName, BusEtaXmlConstants.PREDICTED_ARRIVAL_CONTAINER_TAG)){
         	this.busRoutes.add(busETA);
@@ -93,6 +93,6 @@ public class BusRouteInfoResultHandler extends DefaultHandler {
 	public void characters(char ch[], int start, int length)
     throws SAXException {
     	buffer.append(ch, start, length);
-        System.out.println("start characters : " + buffer);
+        //System.out.println("start characters : " + buffer);
     }
 }

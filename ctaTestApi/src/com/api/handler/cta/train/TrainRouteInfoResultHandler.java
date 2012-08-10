@@ -21,12 +21,12 @@ public class TrainRouteInfoResultHandler extends DefaultHandler{
 	
     @Override
 	public void startDocument() throws SAXException {
-        System.out.println("start document   : ");
+        //System.out.println("start document   : ");
     }
 
     @Override
 	public void endDocument() throws SAXException {
-        System.out.println("end document     : ");
+        //System.out.println("end document     : ");
     }
 
     @Override
@@ -34,7 +34,7 @@ public class TrainRouteInfoResultHandler extends DefaultHandler{
         String qName, Attributes attributes)
     throws SAXException {
 
-        System.out.println("start element    : " + qName);
+       // System.out.println("start element    : " + qName);
         
         buffer.setLength(0);
         
@@ -50,7 +50,7 @@ public class TrainRouteInfoResultHandler extends DefaultHandler{
     @Override
 	public void endElement(String uri, String localName, String qName)
     throws SAXException {
-        System.out.println("end element      : " + qName);
+        //System.out.println("end element      : " + qName);
         
         if(StringUtils.equals(qName, RouteInfoResultConstants.TIME_STAMP_TAG)) {
         	routeInfoResult.setTimeStamp(buffer.toString());
@@ -116,6 +116,6 @@ public class TrainRouteInfoResultHandler extends DefaultHandler{
 	public void characters(char ch[], int start, int length)
     throws SAXException {
     	buffer.append(ch, start, length);
-        System.out.println("start characters : " + buffer);
+        //System.out.println("start characters : " + buffer);
     }
 }
